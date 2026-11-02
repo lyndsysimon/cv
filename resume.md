@@ -2,7 +2,7 @@
 
 # Lyndsy Simon
 
-Harrison, Arkansas · Remote · <lyndsy@lyndsysimon.com> · lyndsysimon.com · github.com/lyndsysimon
+Harrison, Arkansas · Remote · <lyndsy@lyndsysimon.com> · [lyndsysimon.com](https://lyndsysimon.com)
 
 ## Summary
 
