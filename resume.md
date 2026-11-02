@@ -73,7 +73,7 @@ Mar 2007 – May 2013 · Harrison, AR
 
 Dec 2010 – Dec 2015
 
-## Selected Open Source
+## Open Source
 
 - **bip32utils** — BIP32 hierarchical deterministic wallet utilities for Python. 2014, still in use.
 - **Contributions** — diff-cover, nimble (Nim package manager), early Gittip.
