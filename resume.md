@@ -76,10 +76,6 @@ Dec 2010 – Dec 2015
 ## Selected Open Source
 
 - **bip32utils** — BIP32 hierarchical deterministic wallet utilities for Python. 2014, still in use.
-- **statscharts** — pandas module implementing statistical process control charts.
-- **cryptocoin** — "Cryptocurrencies for Humans."
-- **revere** — Streaming event API in Python.
-- **gitsubprocess** — Git API built on subprocess calls.
 - **Contributions** — diff-cover, nimble (Nim package manager), early Gittip.
 
 ## Certifications
@@ -89,10 +85,6 @@ Dec 2010 – Dec 2015
 - **Triplebyte** — Certified Generalist Software Engineer, 2020
 - **CompTIA** — A+ (2008–2014), Project+ (2012)
 - **CIW** — v5 Associate, Database Design Specialist, JavaScript Specialist, Web Design Specialist (2010–2013)
-
-## Education
-
-[NEEDS INPUT — the export has two education entries, 2002–2003 and 2010–2013, with the school names blank. If there is no degree, this section can be dropped entirely; the certifications carry more weight anyway.]
 
 ## Business Ownership
 
