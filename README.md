@@ -28,17 +28,22 @@ open site/index.html
 
 ## Page actions
 
-`build/template.html` carries a floating nav with "Download as PDF" and "View on
-GitHub". It lives in the template, not `resume.md`, so the resume source stays
-pure content.
+`build/template.html` carries a floating nav with two icon links: a document
+with a download arrow (the PDF) and the GitHub mark. It lives in the template,
+not `resume.md`, so the resume source stays pure content.
 
-- Wide screens (≥ 74rem): the links sit open at the top right.
+- Wide screens (≥ 58rem): the icons sit open at the top right.
 - Narrow screens: a 44px hamburger at the bottom right, collapsed by default,
   toggled by tap. Escape or an outside tap closes it.
 - `@media print` hides it entirely, so it never reaches the PDF.
 
-The 74rem breakpoint is the width at which the open link row stops colliding
-with the 44rem content column. Lower it only if the labels get shorter.
+Icons are inline SVG filled with `currentColor` — no icon font, no CDN, no
+build step. Each link carries `title` and `aria-label` with its old text, since
+the visible label is gone.
+
+The 58rem breakpoint is the width at which the open icon row stops colliding
+with the 44rem content column. Re-measure it if the icons or their padding
+change.
 
 ## PDF
 

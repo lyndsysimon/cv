@@ -172,8 +172,7 @@ a:hover { text-decoration-color: currentColor; }
 .page-actions__list {
   display: none;
   margin: 0;
-  padding: 0.35rem;
-  min-width: 11rem;
+  padding: 0.3rem;
   list-style: none;
   border: 1px solid var(--rule);
   border-radius: 0.6rem;
@@ -181,22 +180,36 @@ a:hover { text-decoration-color: currentColor; }
   box-shadow: 0 6px 24px rgb(0 0 0 / 16%);
 }
 
-.page-actions.is-open .page-actions__list { display: block; }
+.page-actions.is-open .page-actions__list { display: flex; }
 
 .page-actions__list li { margin: 0; }
 
 .page-actions__list a {
-  display: block;
-  padding: 0.5rem 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 0.35rem;
+  color: var(--muted);
   text-decoration: none;
-  white-space: nowrap;
 }
 
-.page-actions__list a:hover { background: var(--rule); }
+.page-actions__list a:hover,
+.page-actions__list a:focus-visible {
+  background: var(--rule);
+  color: var(--fg);
+}
+
+.page-actions__icon {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+}
 
 /* Wide screens: the links sit open at the top right, no toggle. */
-@media (min-width: 74rem) {
+@media (min-width: 58rem) {
   .page-actions {
     top: 1rem;
     bottom: auto;
@@ -210,11 +223,8 @@ a:hover { text-decoration-color: currentColor; }
     display: flex;
     gap: 0.15rem;
     padding: 0.2rem;
-    min-width: 0;
     box-shadow: none;
   }
-
-  .page-actions__list a { padding: 0.35rem 0.6rem; }
 }
 
 /* Print: what a PDF export should look like. */
