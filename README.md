@@ -32,14 +32,16 @@ open site/index.html
 with a download arrow (the PDF) and the GitHub mark. It lives in the template,
 not `resume.md`, so the resume source stays pure content.
 
-- Wide screens (≥ 58rem): the icons sit open at the top right.
+- Wide screens (≥ 58rem): icons only, open at the top right. The label lives in
+  `title` and `aria-label`, so it appears on hover.
 - Narrow screens: a 44px hamburger at the bottom right, collapsed by default,
-  toggled by tap. Escape or an outside tap closes it.
+  toggled by tap. Escape or an outside tap closes it. The expanded menu is a
+  stacked list of icon + label, because touch has no hover.
 - `@media print` hides it entirely, so it never reaches the PDF.
 
 Icons are inline SVG filled with `currentColor` — no icon font, no CDN, no
-build step. Each link carries `title` and `aria-label` with its old text, since
-the visible label is gone.
+build step. The label text is a real `<span>` that CSS hides on wide screens,
+so it stays in the DOM for assistive tech and for the narrow layout.
 
 The 58rem breakpoint is the width at which the open icon row stops colliding
 with the 44rem content column. Re-measure it if the icons or their padding
