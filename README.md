@@ -26,6 +26,20 @@ Requires [pandoc](https://pandoc.org) (`brew install pandoc`).
 open site/index.html
 ```
 
+## Page actions
+
+`build/template.html` carries a floating nav with "Download as PDF" and "View on
+GitHub". It lives in the template, not `resume.md`, so the resume source stays
+pure content.
+
+- Wide screens (≥ 74rem): the links sit open at the top right.
+- Narrow screens: a 44px hamburger at the bottom right, collapsed by default,
+  toggled by tap. Escape or an outside tap closes it.
+- `@media print` hides it entirely, so it never reaches the PDF.
+
+The 74rem breakpoint is the width at which the open link row stops colliding
+with the 44rem content column. Lower it only if the labels get shorter.
+
 ## PDF
 
 `resume.pdf` is committed and served at <https://cv.lyndsysimon.com/resume.pdf>.

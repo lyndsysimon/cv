@@ -97,9 +97,124 @@ a {
 a:hover { text-decoration-color: currentColor; }
 
 @media (max-width: 40rem) {
-  body { padding: 2.25rem 1.15rem 3.5rem; font-size: 15px; }
+  /* Extra bottom room so the floating menu never sits on the last line. */
+  body { padding: 2.25rem 1.15rem 5.5rem; font-size: 15px; }
   h1 { font-size: 1.65rem; }
   h2 { margin-top: 2.25rem; }
+}
+
+/* Page actions — floating links. Screen only; never in the PDF. */
+.page-actions {
+  position: fixed;
+  z-index: 20;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.page-actions__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 12%);
+}
+
+/* Icon-only on narrow screens: the label is for assistive tech only. */
+.page-actions__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page-actions__toggle:hover { border-color: var(--muted); }
+
+.page-actions__bars,
+.page-actions__bars::before,
+.page-actions__bars::after {
+  display: block;
+  width: 1rem;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.page-actions__bars { position: relative; }
+
+.page-actions__bars::before,
+.page-actions__bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.page-actions__bars::before { top: -5px; }
+.page-actions__bars::after { top: 5px; }
+
+.page-actions__list {
+  display: none;
+  margin: 0;
+  padding: 0.35rem;
+  min-width: 11rem;
+  list-style: none;
+  border: 1px solid var(--rule);
+  border-radius: 0.6rem;
+  background: var(--bg);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 16%);
+}
+
+.page-actions.is-open .page-actions__list { display: block; }
+
+.page-actions__list li { margin: 0; }
+
+.page-actions__list a {
+  display: block;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.35rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.page-actions__list a:hover { background: var(--rule); }
+
+/* Wide screens: the links sit open at the top right, no toggle. */
+@media (min-width: 74rem) {
+  .page-actions {
+    top: 1rem;
+    bottom: auto;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .page-actions__toggle { display: none; }
+
+  .page-actions__list {
+    display: flex;
+    gap: 0.15rem;
+    padding: 0.2rem;
+    min-width: 0;
+    box-shadow: none;
+  }
+
+  .page-actions__list a { padding: 0.35rem 0.6rem; }
 }
 
 /* Print: what a PDF export should look like. */
@@ -125,6 +240,9 @@ a:hover { text-decoration-color: currentColor; }
   li, p { break-inside: avoid; }
   a { text-decoration: none; }
   ul { padding-left: 1rem; }
+
+  /* Navigation chrome has no place in a printed or exported resume. */
+  .page-actions { display: none !important; }
 
   @page { margin: 1.5cm 1.7cm; }
 }

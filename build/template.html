@@ -8,6 +8,51 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<nav class="page-actions" id="page-actions" aria-label="Page actions">
+  <button class="page-actions__toggle" type="button"
+          aria-expanded="false" aria-controls="page-actions-list">
+    <span class="page-actions__bars" aria-hidden="true"></span>
+    <span class="page-actions__label">Menu</span>
+  </button>
+  <ul class="page-actions__list" id="page-actions-list">
+    <li><a href="resume.pdf" download>Download as PDF</a></li>
+    <li><a href="https://github.com/lyndsysimon/cv">View on GitHub</a></li>
+  </ul>
+</nav>
 $body$
+<script>
+(function () {
+  var nav = document.getElementById('page-actions');
+  var btn = nav.querySelector('.page-actions__toggle');
+
+  function setOpen(open) {
+    nav.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('is-open'));
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('is-open') && !nav.contains(e.target)) {
+      setOpen(false);
+    }
+  });
+
+  // Leaving the narrow layout should not strand the menu in a closed state.
+  var wide = window.matchMedia('(min-width: 60rem)');
+  var onChange = function (e) { if (e.matches) setOpen(false); };
+  if (wide.addEventListener) wide.addEventListener('change', onChange);
+  else if (wide.addListener) wide.addListener(onChange);
+})();
+</script>
 </body>
 </html>
