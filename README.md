@@ -7,8 +7,10 @@ Single-page CV for Lyndsy Simon, published to GitHub Pages at
 
 ```
 resume.md              canonical source — edit this
+resume.pdf             committed PDF export, served at /resume.pdf
 build/style.css        site stylesheet (screen + print)
 scripts/build.sh       pandoc build: resume.md -> site/index.html
+scripts/build-pdf.sh   headless Chrome: site/index.html -> resume.pdf
 .github/workflows/     Pages build and deploy
 ```
 
@@ -23,6 +25,19 @@ Requires [pandoc](https://pandoc.org) (`brew install pandoc`).
 ./scripts/build.sh
 open site/index.html
 ```
+
+## PDF
+
+`resume.pdf` is committed and served at <https://cv.lyndsysimon.com/resume.pdf>.
+Regenerate it after editing `resume.md`:
+
+```sh
+./scripts/build-pdf.sh
+```
+
+It uses headless Chrome (set `CHROME=/path/to/chrome` if it can't find one).
+The PDF is committed rather than built in CI because the Pages runner has no
+PDF engine.
 
 ## Deploy
 

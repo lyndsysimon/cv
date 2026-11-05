@@ -23,4 +23,9 @@ pandoc resume.md \
 
 cp build/style.css site/style.css
 
+# resume.pdf is committed (see scripts/build-pdf.sh); ship it alongside the page.
+if [ -f resume.pdf ]; then
+  cp resume.pdf site/resume.pdf
+fi
+
 echo "built site/index.html ($(wc -c < site/index.html | tr -d ' ') bytes)"
